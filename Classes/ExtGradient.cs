@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace StupidTemplate.Classes
+namespace BreezeCheatClient.Classes
 {
     public class ExtGradient
     {

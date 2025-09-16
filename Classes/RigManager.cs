@@ -4,7 +4,7 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
-namespace StupidTemplate.Classes
+namespace BreezeCheatClient.Classes
 {
     internal class RigManager : BaseUnityPlugin
     {

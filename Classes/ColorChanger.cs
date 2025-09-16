@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace StupidTemplate.Classes
+namespace BreezeCheatClient.Classes
 {
-    public class ColorChanger : TimedBehaviour
+       public class ColorChanger : TimedBehaviour
     {
         public override void Start()
         {
@@ -21,8 +21,8 @@ namespace StupidTemplate.Classes
                     Color color = new Gradient { colorKeys = colorInfo.colors }.Evaluate((Time.time / 2f) % 1);
                     if (colorInfo.isRainbow)
                     {
-                        float h = (Time.frameCount / 180f) % 1f;
-                        color = UnityEngine.Color.HSVToRGB(h, 1f, 1f);
+                        float m = (Time.frameCount / 180f) % 1f;
+                        color = new Color(169f / 255f, 185f / 255f, 209f / 255f);
                     }
                     renderer.material.color = color;
                 }

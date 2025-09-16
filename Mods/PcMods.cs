@@ -1,0 +1,46 @@
+﻿using BepInEx;
+using GorillaLocomotion;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
+using static BreezeCheatClient.Menu.Main;
+namespace Breeze.Mods
+{
+    internal class PcMods
+    {
+        public static void EnterPcMods()
+        {
+            buttonsType = 9;
+        }
+        public static void PCnoclip()
+        {
+
+            bool NoCollide = (!UnityInput.Current.GetKey(KeyCode.E));
+            MeshCollider[] colliders = Resources.FindObjectsOfTypeAll<MeshCollider>();
+
+            foreach (MeshCollider collider in colliders)
+            {
+                collider.enabled = !NoCollide;
+            }
+        }
+        public static void PCghost()
+        {
+            if (!UnityInput.Current.GetKey(KeyCode.Q))
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = true;
+            }
+            else
+            {
+                GorillaTagger.Instance.offlineVRRig.enabled = false;
+            }
+        }
+        public static void EnableHands()
+        {
+            GTPlayer.Instance.wasRightHandColliding = true;
+            GTPlayer.Instance.wasLeftHandColliding = true;
+        }
+
+    }
+}

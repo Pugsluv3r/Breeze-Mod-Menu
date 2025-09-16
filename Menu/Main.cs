@@ -1,16 +1,17 @@
 ﻿using BepInEx;
 using HarmonyLib;
-using StupidTemplate.Classes;
-using StupidTemplate.Notifications;
+using BreezeCheatClient.Classes;
+using BreezeCheatClient.Notifications;
 using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static StupidTemplate.Menu.Buttons;
-using static StupidTemplate.Settings;
+using static BreezeCheatClient.Menu.Buttons;
+using static BreezeCheatClient.Settings;
+using Photon.Pun;
 
-namespace StupidTemplate.Menu
+namespace BreezeCheatClient.Menu
 {
     [HarmonyPatch(typeof(GorillaLocomotion.GTPlayer))]
     [HarmonyPatch("LateUpdate", MethodType.Normal)]
@@ -22,7 +23,8 @@ namespace StupidTemplate.Menu
             // Initialize Menu
                 try
                 {
-                    bool toOpen = (!rightHanded && ControllerInputPoller.instance.leftControllerSecondaryButton) || (rightHanded && ControllerInputPoller.instance.rightControllerSecondaryButton);
+                
+                bool toOpen = (!rightHanded && ControllerInputPoller.instance.leftControllerSecondaryButton) || (rightHanded && ControllerInputPoller.instance.rightControllerSecondaryButton);
                     bool keyboardOpen = UnityInput.Current.GetKey(keyboardButton);
 
                     if (menu == null)
@@ -186,55 +188,57 @@ namespace StupidTemplate.Menu
                     component2.sizeDelta = new Vector2(0.28f, 0.02f);
                     component2.position = new Vector3(0.06f, 0f, 0.135f);
                     component2.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                }
+            }
 
             // Buttons
-                // Disconnect
-                    if (disconnectButton)
-                    {
-                        GameObject disconnectbutton = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        if (!UnityInput.Current.GetKey(KeyCode.Q))
-                        {
-                            disconnectbutton.layer = 2;
-                        }
-                        UnityEngine.Object.Destroy(disconnectbutton.GetComponent<Rigidbody>());
-                        disconnectbutton.GetComponent<BoxCollider>().isTrigger = true;
-                        disconnectbutton.transform.parent = menu.transform;
-                        disconnectbutton.transform.rotation = Quaternion.identity;
-                        disconnectbutton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
-                        disconnectbutton.transform.localPosition = new Vector3(0.56f, 0f, 0.6f);
-                        disconnectbutton.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
-                        disconnectbutton.AddComponent<Classes.Button>().relatedText = "Disconnect";
+            // Disconnect
+            if (disconnectButton)
+            {
+                GameObject disconnectbutton = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                if (!UnityInput.Current.GetKey(KeyCode.T))
+                {
+                    disconnectbutton.layer = 2;
+                }
+                UnityEngine.Object.Destroy(disconnectbutton.GetComponent<Rigidbody>());
+                disconnectbutton.GetComponent<BoxCollider>().isTrigger = true;
+                disconnectbutton.transform.parent = menu.transform;
+                disconnectbutton.transform.rotation = Quaternion.identity;
+                disconnectbutton.transform.localScale = new Vector3(0.09f, 0.9f, 0.08f);
+                disconnectbutton.transform.localPosition = new Vector3(0.56f, 0f, 0.6f);
+                disconnectbutton.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+                disconnectbutton.AddComponent<Classes.Button>().relatedText = "Disconnect";
+               
+                colorChanger = disconnectbutton.AddComponent<ColorChanger>();
+                colorChanger.colorInfo = buttonColors[0];
+                colorChanger.Start();
 
-                        colorChanger = disconnectbutton.AddComponent<ColorChanger>();
-                        colorChanger.colorInfo = buttonColors[0];
-                        colorChanger.Start();
-
-                        Text discontext = new GameObject
-                        {
-                            transform =
+                Text discontext = new GameObject
+                {
+                    transform =
                             {
                                 parent = canvasObject.transform
                             }
-                        }.AddComponent<Text>();
-                        discontext.text = "Disconnect";
-                        discontext.font = currentFont;
-                        discontext.fontSize = 1;
-                        discontext.color = textColors[0];
-                        discontext.alignment = TextAnchor.MiddleCenter;
-                        discontext.resizeTextForBestFit = true;
-                        discontext.resizeTextMinSize = 0;
+                }.AddComponent<Text>();
+                discontext.text = "Disconnect";
+                discontext.font = currentFont;
+                discontext.fontSize = 1;
+                discontext.color = textColors[0];
+                discontext.alignment = TextAnchor.MiddleCenter;
+                discontext.resizeTextForBestFit = true;
+                discontext.resizeTextMinSize = 0;
 
-                        RectTransform rectt = discontext.GetComponent<RectTransform>();
-                        rectt.localPosition = Vector3.zero;
-                        rectt.sizeDelta = new Vector2(0.2f, 0.03f);
-                        rectt.localPosition = new Vector3(0.064f, 0f, 0.23f);
-                        rectt.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-                    }
+                RectTransform rectt = discontext.GetComponent<RectTransform>();
+                rectt.localPosition = Vector3.zero;
+                rectt.sizeDelta = new Vector2(0.2f, 0.03f);
+                rectt.localPosition = new Vector3(0.064f, 0f, 0.23f);
+                rectt.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+            }
+            
 
-                // Page Buttons
-                    GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    if (!UnityInput.Current.GetKey(KeyCode.Q))
+
+            // Page Buttons
+            GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                    if (!UnityInput.Current.GetKey(KeyCode.T))
                     {
                         gameObject.layer = 2;
                     }
@@ -242,8 +246,8 @@ namespace StupidTemplate.Menu
                     gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     gameObject.transform.parent = menu.transform;
                     gameObject.transform.rotation = Quaternion.identity;
-                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.9f);
-                    gameObject.transform.localPosition = new Vector3(0.56f, 0.65f, 0);
+                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
+                    gameObject.transform.localPosition = new Vector3(0.56f, 0.65f, -0.4f);
                     gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
                     gameObject.AddComponent<Classes.Button>().relatedText = "PreviousPage";
 
@@ -268,11 +272,11 @@ namespace StupidTemplate.Menu
                     component = text.GetComponent<RectTransform>();
                     component.localPosition = Vector3.zero;
                     component.sizeDelta = new Vector2(0.2f, 0.03f);
-                    component.localPosition = new Vector3(0.064f, 0.195f, 0f);
+                    component.localPosition = new Vector3(0.064f, 0.195f, -0.15f);
                     component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
 
                     gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    if (!UnityInput.Current.GetKey(KeyCode.Q))
+                    if (!UnityInput.Current.GetKey(KeyCode.T))
                     {
                         gameObject.layer = 2;
                     }
@@ -280,8 +284,8 @@ namespace StupidTemplate.Menu
                     gameObject.GetComponent<BoxCollider>().isTrigger = true;
                     gameObject.transform.parent = menu.transform;
                     gameObject.transform.rotation = Quaternion.identity;
-                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.9f);
-                    gameObject.transform.localPosition = new Vector3(0.56f, -0.65f, 0);
+                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
+                    gameObject.transform.localPosition = new Vector3(0.56f, -0.65f, -0.4f);
                     gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
                     gameObject.AddComponent<Classes.Button>().relatedText = "NextPage";
 
@@ -306,7 +310,7 @@ namespace StupidTemplate.Menu
                     component = text.GetComponent<RectTransform>();
                     component.localPosition = Vector3.zero;
                     component.sizeDelta = new Vector2(0.2f, 0.03f);
-                    component.localPosition = new Vector3(0.064f, -0.195f, 0f);
+                    component.localPosition = new Vector3(0.064f, -0.195f, -0.15f);
                     component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
 
                 // Mod Buttons
@@ -320,7 +324,7 @@ namespace StupidTemplate.Menu
         public static void CreateButton(float offset, ButtonInfo method)
         {
             GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            if (!UnityInput.Current.GetKey(KeyCode.Q))
+            if (!UnityInput.Current.GetKey(KeyCode.T))
             {
                 gameObject.layer = 2;
             }

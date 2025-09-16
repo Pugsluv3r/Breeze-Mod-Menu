@@ -3,11 +3,11 @@ using System.Linq;
 using BepInEx;
 using UnityEngine;
 using UnityEngine.UI;
-using static StupidTemplate.Settings;
+using static BreezeCheatClient.Settings;
 
-namespace StupidTemplate.Notifications
+namespace BreezeCheatClient.Notifications
 {
-    [BepInPlugin("org.gorillatag.lars.notifications2", "NotificationLibrary", "1.0.5")]
+    [BepInPlugin("org.gorillatag.lars.notifications2", "NotificationLibrary", "1.1.0")]
     public class NotifiLib : BaseUnityPlugin
     {
         private void Awake()

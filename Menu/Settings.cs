@@ -1,8 +1,8 @@
-﻿using StupidTemplate.Classes;
+﻿using BreezeCheatClient.Classes;
 using UnityEngine;
-using static StupidTemplate.Menu.Main;
+using static BreezeCheatClient.Menu.Main;
 
-namespace StupidTemplate
+namespace BreezeCheatClient
 {
     internal class Settings
     {
@@ -10,7 +10,7 @@ namespace StupidTemplate
         public static ExtGradient[] buttonColors = new ExtGradient[]
         {
             new ExtGradient{colors = GetSolidGradient(Color.black) }, // Disabled
-            new ExtGradient{isRainbow = true} // Enabled
+            new ExtGradient{colors = GetSolidGradient(new Color(145f / 255f, 185f / 255f, 237f / 255f))} // Enabled
         };
         public static Color[] textColors = new Color[]
         {
@@ -22,10 +22,10 @@ namespace StupidTemplate
 
         public static bool fpsCounter = true;
         public static bool disconnectButton = true;
-        public static bool rightHanded = false;
+        public static bool rightHanded = true;
         public static bool disableNotifications = false;
 
-        public static KeyCode keyboardButton = KeyCode.Q;
+        public static KeyCode keyboardButton = KeyCode.T;
 
         public static Vector3 menuSize = new Vector3(0.1f, 1f, 1f); // Depth, Width, Height
         public static int buttonsPerPage = 8;

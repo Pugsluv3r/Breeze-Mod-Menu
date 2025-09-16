@@ -1,12 +1,15 @@
 ﻿using BepInEx;
+using BreezeCheatClient.Classes;
 using System.ComponentModel;
+using UnityEngine;
 
-namespace StupidTemplate.Patches
+namespace BreezeCheatClient.Patches
 {
-    [Description(StupidTemplate.PluginInfo.Description)]
-    [BepInPlugin(StupidTemplate.PluginInfo.GUID, StupidTemplate.PluginInfo.Name, StupidTemplate.PluginInfo.Version)]
+    [Description(BreezeCheatClient.PluginInfo.Description)]
+    [BepInPlugin(BreezeCheatClient.PluginInfo.GUID, BreezeCheatClient.PluginInfo.Name, BreezeCheatClient.PluginInfo.Version)]
     public class HarmonyPatches : BaseUnityPlugin
     {
+        
         private void OnEnable()
         {
             Menu.ApplyHarmonyPatches();

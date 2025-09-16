@@ -1,12 +1,12 @@
 ﻿using HarmonyLib;
-using StupidTemplate.Notifications;
+using BreezeCheatClient.Notifications;
 using Photon.Pun;
 using Photon.Realtime;
 using System.IO;
 using UnityEngine;
-using static StupidTemplate.Menu.Main;
+using static BreezeCheatClient.Menu.Main;
 
-namespace StupidTemplate.Patches
+namespace BreezeCheatClient.Patches
 {
     [HarmonyPatch(typeof(MonoBehaviourPunCallbacks), "OnPlayerLeftRoom")]
     internal class LeavePatch : MonoBehaviour

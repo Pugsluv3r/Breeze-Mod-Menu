@@ -1,10 +1,10 @@
-﻿namespace StupidTemplate
+﻿namespace BreezeCheatClient
 {
     internal class PluginInfo
     {
-        public const string GUID = "org.iidk.gorillatag.menutemplate";
-        public const string Name = "ii's Stupid Template";
-        public const string Description = "Created by @goldentrophy with love <3";
+        public const string GUID = "org.PugsReborn.gorillatag.Breeze.gg";
+        public const string Name = "Breeze Client";
+        public const string Description = "Outsmart Outwit Outplay";
         public const string Version = "1.0.0";
     }
 }

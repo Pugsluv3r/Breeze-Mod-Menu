@@ -1,7 +1,9 @@
-﻿using static StupidTemplate.Menu.Main;
-using static StupidTemplate.Settings;
+﻿using GorillaNetworking;
+using Photon.Pun;
+using static BreezeCheatClient.Menu.Main;
+using static BreezeCheatClient.Settings;
 
-namespace StupidTemplate.Mods
+namespace BreezeCheatClient.Mods
 {
     internal class SettingsMods
     {
@@ -13,16 +15,6 @@ namespace StupidTemplate.Mods
         public static void MenuSettings()
         {
             buttonsType = 2;
-        }
-
-        public static void MovementSettings()
-        {
-            buttonsType = 3;
-        }
-
-        public static void ProjectileSettings()
-        {
-            buttonsType = 4;
         }
 
         public static void RightHand()

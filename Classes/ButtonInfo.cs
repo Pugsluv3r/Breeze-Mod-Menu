@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StupidTemplate.Classes
+namespace BreezeCheatClient.Classes
 {
     public class ButtonInfo
     {

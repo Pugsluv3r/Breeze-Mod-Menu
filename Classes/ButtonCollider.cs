@@ -1,9 +1,9 @@
 using Photon.Pun;
 using UnityEngine;
-using static StupidTemplate.Menu.Main;
-using static StupidTemplate.Settings;
+using static BreezeCheatClient.Menu.Main;
+using static BreezeCheatClient.Settings;
 
-namespace StupidTemplate.Classes
+namespace BreezeCheatClient.Classes
 {
 	internal class Button : MonoBehaviour
 	{

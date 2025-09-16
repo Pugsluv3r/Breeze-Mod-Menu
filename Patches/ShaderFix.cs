@@ -2,7 +2,7 @@
 using HarmonyLib;
 using UnityEngine;
 
-namespace StupidTemplate.Patches
+namespace BreezeCheatClient.Patches
 {
     [HarmonyPatch(typeof(GameObject))]
     [HarmonyPatch("CreatePrimitive", 0)]
