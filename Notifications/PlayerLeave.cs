@@ -15,7 +15,7 @@ namespace BreezeCheatClient.Patches
         {
             if (otherPlayer != PhotonNetwork.LocalPlayer && otherPlayer != a)
             {
-                NotifiLib.SendNotification("<color=grey>[</color><color=red>LEAVE</color><color=grey>]</color> <color=white>Name: " + otherPlayer.NickName + "</color>");
+                NotifiLib.SendNotification("<color=grey>[</color><color=red>Disconnected</color><color=grey>]</color> <color=white>Name: " + otherPlayer.NickName + "</color>");
                 a = otherPlayer;
             }
         }

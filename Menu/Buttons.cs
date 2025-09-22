@@ -2,6 +2,7 @@
 using BreezeCheatClient.Classes;
 using BreezeCheatClient.Mods;
 using static BreezeCheatClient.Settings;
+using static Breeze.Menu.Disconnect;
 
 namespace BreezeCheatClient.Menu
 {
@@ -17,6 +18,7 @@ namespace BreezeCheatClient.Menu
                 new ButtonInfo { buttonText = "Overpowered", method =() => Overpowered.EnterOverpowered(), isTogglable = false, toolTip = "Overpowered UND"},
                 new ButtonInfo { buttonText = "Safety", method =() => Safety.EnterSaftey(), isTogglable = false, toolTip = "Saftey related Mods"},
                 new ButtonInfo { buttonText = "PC Utils", method =() => PcMods.EnterPcMods(), isTogglable = false, toolTip = "suckjdisfj"},
+                new ButtonInfo { buttonText = "Other", method =() => Othershit.EnterOther(), isTogglable = false, toolTip = "Uncatatagorized junk"},
                 new ButtonInfo { buttonText = "Credits", method =() => Global.Entercredits(), isTogglable = false, toolTip = "Congrats we made a mod"},
             },
 
@@ -80,13 +82,17 @@ namespace BreezeCheatClient.Menu
                  new ButtonInfo { buttonText = "to the user, Thank you for using my menu", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
                  new ButtonInfo { buttonText = "Without you guys i dont know if id be in the spot im at today <3", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
            },
-                                                     new ButtonInfo[] { //pcutil [9]
+                  new ButtonInfo[] { //pcutil [9]
                  new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                  new ButtonInfo { buttonText = "Pc Controller emulator", method =() => MenuLibrarys.GunLib(), isTogglable = true, toolTip =  "emulates your controllers"},
                  new ButtonInfo { buttonText = "Pc Noclip (E)", method =() => PcMods.PCnoclip(), isTogglable = true, toolTip =  "Press E to enable noclip"},
                  new ButtonInfo { buttonText = "Pc Ghost (Q)", method =() => PcMods.PCghost(), isTogglable = true, toolTip =  "Press Q to enable Ghost"},
                  new ButtonInfo { buttonText = "Force enable hand colliders", method =() => PcMods.EnableHands(), isTogglable = true, toolTip =  "Enables hand colliders"},
           },
+                 new ButtonInfo[] { // Other shit [10]
+                 new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
+                 new ButtonInfo { buttonText = "Clear Notifs", method =() => Othershit.Clearnotifs(), isTogglable = false, toolTip = "Clears all notifications"},
+         },
        };
     }
 }

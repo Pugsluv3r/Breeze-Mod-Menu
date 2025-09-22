@@ -132,6 +132,7 @@ namespace BreezeCheatClient.Menu
                 colorChanger.colorInfo = backgroundColor;
                 colorChanger.Start();
 
+
             // Canvas
                 canvasObject = new GameObject();
                 canvasObject.transform.parent = menu.transform;
