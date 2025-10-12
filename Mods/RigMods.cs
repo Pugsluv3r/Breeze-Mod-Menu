@@ -18,29 +18,12 @@ namespace Breeze.Mods
         {
             if (RightTrigger)
             {
-                GameObject lBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                GameObject.Destroy(lBall.GetComponent<Collider>()); 
-                lBall.GetComponent<Renderer>().material.shader = Shader.Find("GorillaTag/UberShader");
-                lBall.GetComponent<Renderer>().material.color = Color.red;
-                lBall.transform.localScale = new Vector3(0f, 0f, 0f);
-                lBall.transform.SetParent(GorillaTagger.Instance.leftHandTransform);
-                lBall.transform.localPosition = Vector3.zero;
-                GameObject rBall = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                GameObject.Destroy(rBall.GetComponent<Collider>());
-                rBall.GetComponent<Renderer>().material.shader = Shader.Find("GorillaTag/UberShader");
-                rBall.GetComponent<Renderer>().material.color = Color.red;
-                rBall.transform.localScale = new Vector3(0f, 0f, 0f);
-                rBall.transform.SetParent(GorillaTagger.Instance.rightHandTransform);
-                rBall.transform.localPosition = Vector3.zero;
-                GorillaTagger.Instance.offlineVRRig.enabled = false;
-                UnityEngine.Object.Destroy(rBall, Time.deltaTime);
-                UnityEngine.Object.Destroy(lBall, Time.deltaTime);
-                
-                
+                GorillaTagger.Instance.offlineVRRig.enabled = false;  // im stupid and this took me 3 hours to figure out
+
             }
             else
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = true;
+                GorillaTagger.Instance.offlineVRRig.enabled = true; // i hate myself
             }
         }
         public static void Grabrig()

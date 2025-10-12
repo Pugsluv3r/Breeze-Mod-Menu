@@ -37,7 +37,7 @@ namespace Breeze.Mods
             plat.transform.rotation = handTransform.rotation;
 
             float h = (Time.frameCount / 180f) % 1f;
-            plat.GetComponent<Renderer>().material.color = UnityEngine.Color.black;
+            plat.GetComponent<Renderer>().material.color = UnityEngine.Color.mintCream;
             return plat;
         }
 
@@ -71,26 +71,6 @@ namespace Breeze.Mods
         {
             GTPlayer.Instance.AddForce(new Vector3(0, GravValue, 0), ForceMode.Impulse);
         }
-
-
-        //temp change before release
-
-        private static bool lasttouchleft = false;
-        private static bool lasttouchright = false;
-        public static void Pullchanger(float PullValue)
-        {
-            if (LeftGrab)
-            {
-                if (!(GTPlayer.Instance.wasLeftHandColliding || GTPlayer.Instance.wasRightHandColliding))
-                {
-                    Vector3 vel = GorillaTagger.Instance.rigidbody.velocity;
-                    GTPlayer.Instance.transform.position += new Vector3(vel.x * PullValue, 0f, vel.z * PullValue);
-                }
-                lasttouchleft = GTPlayer.Instance.IsHandTouching(true);
-                lasttouchright = GTPlayer.Instance.IsHandTouching(false);
-            }
-        }
-        //end
         public static void SlideControl(float slideV)
         {
             if (RightGrab)

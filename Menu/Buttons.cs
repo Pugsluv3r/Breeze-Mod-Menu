@@ -37,11 +37,9 @@ namespace BreezeCheatClient.Menu
              new ButtonInfo[] { // Movement [3]
                 new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                 new ButtonInfo { buttonText = "Speed Boost", method =() => Movement.BetterSpeedboost(), isTogglable = true, toolTip = "A slight speedboost"},
-                new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platforms(), isTogglable = true, toolTip = "Use your left and right grips to make plats"},
-                new ButtonInfo { buttonText = "Low Gravity", method =() => Movement.GravityChanger(1.7f), isTogglable = true, toolTip = "Monkes on da MOON!"},
-                new ButtonInfo { buttonText = "High Gravity", method =() => Movement.GravityChanger(-2.7f), isTogglable = true, toolTip = "Monkes go to jupiter to get more stupider!"},
-                new ButtonInfo { buttonText = "Heavy Pull (temp)", method = () => Movement.Pullchanger(0.014f), isTogglable = true, toolTip = "Gives player a heavy pull"},
-                new ButtonInfo { buttonText = "Light Pull (temp)", method = () => Movement.Pullchanger(0.008f), isTogglable = true, toolTip = "Gives player a light pull"},
+                new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platforms(), isTogglable = true, toolTip = "Use your left and right grips to make plats"}, // i want to die
+                new ButtonInfo { buttonText = "Low Gravity", method =() => Movement.GravityChanger(1.7f), isTogglable = true, toolTip = "Monkes on da MOON!"}, // same with this tooltip
+                new ButtonInfo { buttonText = "High Gravity", method =() => Movement.GravityChanger(-2.7f), isTogglable = true, toolTip = "Monkes go to jupiter to get more stupider!"}, // i hate this fucking tooltip 
                 new ButtonInfo { buttonText = "Quest Slide Control", method = () => Movement.SlideControl(0.0006f), isTogglable = true, toolTip = "Gives player a slide control similar to a quest player"}
              },
                  new ButtonInfo[] { // Saftey [4]

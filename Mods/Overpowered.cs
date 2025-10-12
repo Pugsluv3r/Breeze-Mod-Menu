@@ -32,6 +32,5 @@ namespace Breeze.Mods
                 GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0, 0, 999f);
             }
         }
-
     }
 }
