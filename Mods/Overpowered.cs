@@ -17,19 +17,13 @@ namespace Breeze.Mods
 
         public static void Fling()
         {
-            if (LeftX)
-            {
-                GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0, -125f, 0f);
-                GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0, -125f, 0f);
+            //nuh uh
             }
         }
 
         public static void RandomTpPlayer()
         {
-            if (LeftX)
-            {
-                GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0, 0, 999f);
-                GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0, 0, 999f);
+       //nuh uh
             }
         }
     }
