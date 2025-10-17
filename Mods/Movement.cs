@@ -24,7 +24,7 @@ namespace Breeze.Mods
             GorillaLocomotion.GTPlayer.Instance.maxJumpSpeed = 7.04f;
             GorillaLocomotion.GTPlayer.Instance.jumpMultiplier = 1.3f;
         }
-     
+
         private static GameObject leftplat = null;
         private static GameObject rightplat = null;
 
@@ -78,6 +78,26 @@ namespace Breeze.Mods
                 GTPlayer.Instance.slideControl = slideV;
             }
         }
+        public static void Headfly(float flyspeed)
+        {
+            if (RightTrigger)
+            {
+                GTPlayer.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * flyspeed;
+                GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
+                if (RightA)
+                {
+                    flyspeed = 20f;
+                }
+            }
+        }
+        public static void HandFly(float flyspeed)
+        {
+            if (RightTrigger)
+            {
+                GTPlayer.Instance.transform.position += GorillaTagger.Instance.rightHandTransform.forward * Time.deltaTime * flyspeed;
+                GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
+            }
 
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 using static BreezeCheatClient.Menu.Main;
+using static Breeze.Mods.MenuLibrarys;
 namespace Breeze.Mods
 {
     internal class PcMods
@@ -18,7 +19,7 @@ namespace Breeze.Mods
         {
 
             bool NoCollide = (!UnityInput.Current.GetKey(KeyCode.E));
-            MeshCollider[] colliders = Resources.FindObjectsOfTypeAll<MeshCollider>();
+            MeshCollider[] colliders = Resources.FindObjectsOfTypeAll<MeshCollider>(); // im aware this is old as fuck BUTTTTT idc so fuck you buddy
 
             foreach (MeshCollider collider in colliders)
             {
@@ -40,6 +41,10 @@ namespace Breeze.Mods
         {
             GTPlayer.Instance.wasRightHandColliding = true;
             GTPlayer.Instance.wasLeftHandColliding = true;
+        }
+        public static void Pchandemu()
+        {
+            
         }
 
     }

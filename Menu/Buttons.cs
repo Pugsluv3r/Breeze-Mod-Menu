@@ -20,6 +20,7 @@ namespace BreezeCheatClient.Menu
                 new ButtonInfo { buttonText = "PC Utils", method =() => PcMods.EnterPcMods(), isTogglable = false, toolTip = "suckjdisfj"},
                 new ButtonInfo { buttonText = "Other", method =() => Othershit.EnterOther(), isTogglable = false, toolTip = "Uncatatagorized junk"},
                 new ButtonInfo { buttonText = "Credits", method =() => Global.Entercredits(), isTogglable = false, toolTip = "Congrats we made a mod"},
+                 new ButtonInfo { buttonText = "Click for version info", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "Version: INDEV preview 2"},
             },
 
             new ButtonInfo[] { // Settings
@@ -40,7 +41,9 @@ namespace BreezeCheatClient.Menu
                 new ButtonInfo { buttonText = "Platforms", method =() => Movement.Platforms(), isTogglable = true, toolTip = "Use your left and right grips to make plats"}, // i want to die
                 new ButtonInfo { buttonText = "Low Gravity", method =() => Movement.GravityChanger(1.7f), isTogglable = true, toolTip = "Monkes on da MOON!"}, // same with this tooltip
                 new ButtonInfo { buttonText = "High Gravity", method =() => Movement.GravityChanger(-2.7f), isTogglable = true, toolTip = "Monkes go to jupiter to get more stupider!"}, // i hate this fucking tooltip 
-                new ButtonInfo { buttonText = "Quest Slide Control", method = () => Movement.SlideControl(0.0006f), isTogglable = true, toolTip = "Gives player a slide control similar to a quest player"}
+                new ButtonInfo { buttonText = "Quest Slide Control", method = () => Movement.SlideControl(0.0006f), isTogglable = true, toolTip = "Gives player a slide control similar to a quest player"},
+                new ButtonInfo { buttonText = "SuperMonke [RT]", method = () => Movement.Headfly(10f), isTogglable  = true, toolTip = "Look were you want to fly, then Use Right trigger to fly and left trigger to boost yourself"},
+                new ButtonInfo { buttonText = "Handfly [RT]", method = () => Movement.HandFly(10f), isTogglable  = true, toolTip = "point your hand were you want to fly, then Use Right trigger to fly and left trigger to boost yourself"}
              },
                  new ButtonInfo[] { // Saftey [4]
                    new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
@@ -52,6 +55,7 @@ namespace BreezeCheatClient.Menu
                    new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                    new ButtonInfo { buttonText = "Fling [X]", method =() => Overpowered.Fling(), isTogglable = true, toolTip = "When holding a players hand press X to fling them (use Return to stump with it)"},
                    new ButtonInfo { buttonText = "Random tp player [X]", method =() => Overpowered.RandomTpPlayer(), isTogglable = true, toolTip = "When holding a players hand press X to teloport them"},
+                   new ButtonInfo { buttonText = "InstaCrash on grab [X]", method =() => Overpowered.CrashonGrab(), isTogglable = true, toolTip = "Crash go brrrr (use Return to stump with it)"},
 
             },
                  new ButtonInfo[] { // Room Mods [6]

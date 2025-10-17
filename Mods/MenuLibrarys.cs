@@ -35,7 +35,7 @@ namespace Breeze.Mods
                     if (GunSphere == null)
                     {
                         GunSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);  // makes a sphere frfr
-                        GunSphere.transform.localScale = new Vector3(0f, 0f, 0f);  // makes it 0 so pretty much invisible
+                        GunSphere.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);  
                         GunSphere.GetComponent<Renderer>().material.shader = Shader.Find("GorillaTag/UberShader");
                         GunSphere.GetComponent<Renderer>().material.color = Color.white;  // not sure why i addded it but oh well changes color
 
@@ -60,11 +60,11 @@ namespace Breeze.Mods
 
                     GunSphere.transform.position = hitinfo.point;
 
-                    timeCounter += Time.deltaTime;  // just a timer for effects or animations
+                    timeCounter += Time.deltaTime; 
 
-                    Vector3 pos1 = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;  //  controller position
-                    float distance = Vector3.Distance(pos1, hitinfo.point);  // distance to the hit point
-                    previousControllerPosition = pos1;  // basically like a storages is keep the position saved
+                    Vector3 pos1 = GorillaLocomotion.GTPlayer.Instance.rightControllerTransform.position;  
+                    float distance = Vector3.Distance(pos1, hitinfo.point);  
+                    previousControllerPosition = pos1;  
 
                     const float spiralTurns = 0f;  // amount of spiral turns
                     const float maxAmplitude = 0.1f;  // max amplitude of the spiral
@@ -101,9 +101,8 @@ namespace Breeze.Mods
                     
                     if (ControllerInputPoller.instance.rightControllerIndexFloat > 0.1f || Mouse.current.leftButton.isPressed)
                     {
+                        
 
-                        GTPlayer.Instance.rightControllerTransform.position = GunSphere.transform.position;
-                        GTPlayer.Instance.leftControllerTransform.position = GunSphere.transform.position;
 
                     }
 

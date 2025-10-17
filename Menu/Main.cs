@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using static BreezeCheatClient.Menu.Buttons;
 using static BreezeCheatClient.Settings;
 using Photon.Pun;
+using BepInEx.Logging;
 
 namespace BreezeCheatClient.Menu
 {
@@ -112,83 +113,83 @@ namespace BreezeCheatClient.Menu
         public static void CreateMenu()
         {
             // Menu Holder
-                menu = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                UnityEngine.Object.Destroy(menu.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(menu.GetComponent<BoxCollider>());
-                UnityEngine.Object.Destroy(menu.GetComponent<Renderer>());
-                menu.transform.localScale = new Vector3(0.1f, 0.3f, 0.3825f);
+            menu = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            UnityEngine.Object.Destroy(menu.GetComponent<Rigidbody>());
+            UnityEngine.Object.Destroy(menu.GetComponent<BoxCollider>());
+            UnityEngine.Object.Destroy(menu.GetComponent<Renderer>());
+            menu.transform.localScale = new Vector3(0.1f, 0.3f, 0.3825f);
 
             // Menu Background
-                menuBackground = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                UnityEngine.Object.Destroy(menuBackground.GetComponent<Rigidbody>());
-                UnityEngine.Object.Destroy(menuBackground.GetComponent<BoxCollider>());
-                menuBackground.transform.parent = menu.transform;
-                menuBackground.transform.rotation = Quaternion.identity;
-                menuBackground.transform.localScale = menuSize;
-                menuBackground.GetComponent<Renderer>().material.color = backgroundColor.colors[0].color;
-                menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
+            menuBackground = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            UnityEngine.Object.Destroy(menuBackground.GetComponent<Rigidbody>());
+            UnityEngine.Object.Destroy(menuBackground.GetComponent<BoxCollider>());
+            menuBackground.transform.parent = menu.transform;
+            menuBackground.transform.rotation = Quaternion.identity;
+            menuBackground.transform.localScale = menuSize;
+            menuBackground.GetComponent<Renderer>().material.color = backgroundColor.colors[0].color;
+            menuBackground.transform.position = new Vector3(0.05f, 0f, 0f);
 
-                ColorChanger colorChanger = menuBackground.AddComponent<ColorChanger>();
-                colorChanger.colorInfo = backgroundColor;
-                colorChanger.Start();
+            ColorChanger colorChanger = menuBackground.AddComponent<ColorChanger>();
+            colorChanger.colorInfo = backgroundColor;
+            colorChanger.Start();
 
 
             // Canvas
-                canvasObject = new GameObject();
-                canvasObject.transform.parent = menu.transform;
-                Canvas canvas = canvasObject.AddComponent<Canvas>();
-                CanvasScaler canvasScaler = canvasObject.AddComponent<CanvasScaler>();
-                canvasObject.AddComponent<GraphicRaycaster>();
-                canvas.renderMode = RenderMode.WorldSpace;
-                canvasScaler.dynamicPixelsPerUnit = 1000f;
+            canvasObject = new GameObject();
+            canvasObject.transform.parent = menu.transform;
+            Canvas canvas = canvasObject.AddComponent<Canvas>();
+            CanvasScaler canvasScaler = canvasObject.AddComponent<CanvasScaler>();
+            canvasObject.AddComponent<GraphicRaycaster>();
+            canvas.renderMode = RenderMode.WorldSpace;
+            canvasScaler.dynamicPixelsPerUnit = 1000f;
 
             // Title and FPS
-                Text text = new GameObject
+            Text text = new GameObject
+            {
+                transform =
+                    {
+                        parent = canvasObject.transform
+                    }
+            }.AddComponent<Text>();
+            text.font = currentFont;
+            text.text = PluginInfo.Name + " <color=grey>[</color><color=white>" + (pageNumber + 1).ToString() + "</color><color=grey>]</color>";
+            text.fontSize = 1;
+            text.color = textColors[0];
+            text.supportRichText = true;
+            text.fontStyle = FontStyle.Italic;
+            text.alignment = TextAnchor.MiddleCenter;
+            text.resizeTextForBestFit = true;
+            text.resizeTextMinSize = 0;
+            RectTransform component = text.GetComponent<RectTransform>();
+            component.localPosition = Vector3.zero;
+            component.sizeDelta = new Vector2(0.28f, 0.05f);
+            component.position = new Vector3(0.06f, 0f, 0.165f);
+            component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+
+            if (fpsCounter)
+            {
+                fpsObject = new GameObject
                 {
                     transform =
                     {
                         parent = canvasObject.transform
                     }
                 }.AddComponent<Text>();
-                text.font = currentFont;
-                text.text = PluginInfo.Name + " <color=grey>[</color><color=white>" + (pageNumber + 1).ToString() + "</color><color=grey>]</color>";
-                text.fontSize = 1;
-                text.color = textColors[0];
-                text.supportRichText = true;
-                text.fontStyle = FontStyle.Italic;
-                text.alignment = TextAnchor.MiddleCenter;
-                text.resizeTextForBestFit = true;
-                text.resizeTextMinSize = 0;
-                RectTransform component = text.GetComponent<RectTransform>();
-                component.localPosition = Vector3.zero;
-                component.sizeDelta = new Vector2(0.28f, 0.05f);
-                component.position = new Vector3(0.06f, 0f, 0.165f);
-                component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
-
-                if (fpsCounter)
-                {
-                    fpsObject = new GameObject
-                    {
-                        transform =
-                    {
-                        parent = canvasObject.transform
-                    }
-                    }.AddComponent<Text>();
-                    fpsObject.font = currentFont;
-                    fpsObject.text = "FPS: " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString();
-                    fpsObject.color = textColors[0];
-                    fpsObject.fontSize = 1;
-                    fpsObject.supportRichText = true;
-                    fpsObject.fontStyle = FontStyle.Italic;
-                    fpsObject.alignment = TextAnchor.MiddleCenter;
-                    fpsObject.horizontalOverflow = UnityEngine.HorizontalWrapMode.Overflow;
-                    fpsObject.resizeTextForBestFit = true;
-                    fpsObject.resizeTextMinSize = 0;
-                    RectTransform component2 = fpsObject.GetComponent<RectTransform>();
-                    component2.localPosition = Vector3.zero;
-                    component2.sizeDelta = new Vector2(0.28f, 0.02f);
-                    component2.position = new Vector3(0.06f, 0f, 0.135f);
-                    component2.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+                fpsObject.font = currentFont;
+                fpsObject.text = "FPS: " + Mathf.Ceil(1f / Time.unscaledDeltaTime).ToString();
+                fpsObject.color = textColors[0];
+                fpsObject.fontSize = 1;
+                fpsObject.supportRichText = true;
+                fpsObject.fontStyle = FontStyle.Italic;
+                fpsObject.alignment = TextAnchor.MiddleCenter;
+                fpsObject.horizontalOverflow = UnityEngine.HorizontalWrapMode.Overflow;
+                fpsObject.resizeTextForBestFit = true;
+                fpsObject.resizeTextMinSize = 0;
+                RectTransform component2 = fpsObject.GetComponent<RectTransform>();
+                component2.localPosition = Vector3.zero;
+                component2.sizeDelta = new Vector2(0.28f, 0.02f);
+                component2.position = new Vector3(0.06f, 0f, 0.135f);
+                component2.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             }
 
             // Buttons
@@ -208,7 +209,7 @@ namespace BreezeCheatClient.Menu
                 disconnectbutton.transform.localPosition = new Vector3(0.56f, 0f, 0.6f);
                 disconnectbutton.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
                 disconnectbutton.AddComponent<Classes.Button>().relatedText = "Disconnect";
-               
+
                 colorChanger = disconnectbutton.AddComponent<ColorChanger>();
                 colorChanger.colorInfo = buttonColors[0];
                 colorChanger.Start();
@@ -234,88 +235,89 @@ namespace BreezeCheatClient.Menu
                 rectt.localPosition = new Vector3(0.064f, 0f, 0.23f);
                 rectt.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
             }
-            
+
 
 
             // Page Buttons
             GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    if (!UnityInput.Current.GetKey(KeyCode.T))
-                    {
-                        gameObject.layer = 2;
-                    }
-                    UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
-                    gameObject.GetComponent<BoxCollider>().isTrigger = true;
-                    gameObject.transform.parent = menu.transform;
-                    gameObject.transform.rotation = Quaternion.identity;
-                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
-                    gameObject.transform.localPosition = new Vector3(0.56f, 0.65f, -0.4f);
-                    gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
-                    gameObject.AddComponent<Classes.Button>().relatedText = "PreviousPage";
+            if (!UnityInput.Current.GetKey(KeyCode.T))
+            {
+                gameObject.layer = 2;
+            }
+            UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            gameObject.transform.parent = menu.transform;
+            gameObject.transform.rotation = Quaternion.identity;
+            gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
+            gameObject.transform.localPosition = new Vector3(0.56f, 0.65f, -0.4f);
+            gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+            gameObject.AddComponent<Classes.Button>().relatedText = "PreviousPage";
 
-                    colorChanger = gameObject.AddComponent<ColorChanger>();
-                    colorChanger.colorInfo = buttonColors[0];
-                    colorChanger.Start();
+            colorChanger = gameObject.AddComponent<ColorChanger>();
+            colorChanger.colorInfo = buttonColors[0];
+            colorChanger.Start();
 
-                    text = new GameObject
-                    {
-                        transform =
+            text = new GameObject
+            {
+                transform =
                         {
                             parent = canvasObject.transform
                         }
-                    }.AddComponent<Text>();
-                    text.font = currentFont;
-                    text.text = "<";
-                    text.fontSize = 1;
-                    text.color = textColors[0];
-                    text.alignment = TextAnchor.MiddleCenter;
-                    text.resizeTextForBestFit = true;
-                    text.resizeTextMinSize = 0;
-                    component = text.GetComponent<RectTransform>();
-                    component.localPosition = Vector3.zero;
-                    component.sizeDelta = new Vector2(0.2f, 0.03f);
-                    component.localPosition = new Vector3(0.064f, 0.195f, -0.15f);
-                    component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+            }.AddComponent<Text>();
+            text.font = currentFont;
+            text.text = "<";
+            text.fontSize = 1;
+            text.color = textColors[0];
+            text.alignment = TextAnchor.MiddleCenter;
+            text.resizeTextForBestFit = true;
+            text.resizeTextMinSize = 0;
+            component = text.GetComponent<RectTransform>();
+            component.localPosition = Vector3.zero;
+            component.sizeDelta = new Vector2(0.2f, 0.03f);
+            component.localPosition = new Vector3(0.064f, 0.195f, -0.15f);
+            component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
 
-                    gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    if (!UnityInput.Current.GetKey(KeyCode.T))
-                    {
-                        gameObject.layer = 2;
-                    }
-                    UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
-                    gameObject.GetComponent<BoxCollider>().isTrigger = true;
-                    gameObject.transform.parent = menu.transform;
-                    gameObject.transform.rotation = Quaternion.identity;
-                    gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
-                    gameObject.transform.localPosition = new Vector3(0.56f, -0.65f, -0.4f);
-                    gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
-                    gameObject.AddComponent<Classes.Button>().relatedText = "NextPage";
+            gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            if (!UnityInput.Current.GetKey(KeyCode.T))
+            {
+                gameObject.layer = 2;
+            }
+            UnityEngine.Object.Destroy(gameObject.GetComponent<Rigidbody>());
+            gameObject.GetComponent<BoxCollider>().isTrigger = true;
+            gameObject.transform.parent = menu.transform;
+            gameObject.transform.rotation = Quaternion.identity;
+            gameObject.transform.localScale = new Vector3(0.09f, 0.2f, 0.15f);
+            gameObject.transform.localPosition = new Vector3(0.56f, -0.65f, -0.4f);
+            gameObject.GetComponent<Renderer>().material.color = buttonColors[0].colors[0].color;
+            gameObject.AddComponent<Classes.Button>().relatedText = "NextPage";
 
-                    colorChanger = gameObject.AddComponent<ColorChanger>();
-                    colorChanger.colorInfo = buttonColors[0];
-                    colorChanger.Start();
+            colorChanger = gameObject.AddComponent<ColorChanger>();
+            colorChanger.colorInfo = buttonColors[0];
+            colorChanger.Start();
 
-                    text = new GameObject
-                    {
-                        transform =
+            text = new GameObject
+            {
+                transform =
                         {
                             parent = canvasObject.transform
                         }
-                    }.AddComponent<Text>();
-                    text.font = currentFont;
-                    text.text = ">";
-                    text.fontSize = 1;
-                    text.color = textColors[0];
-                    text.alignment = TextAnchor.MiddleCenter;
-                    text.resizeTextForBestFit = true;
-                    text.resizeTextMinSize = 0;
-                    component = text.GetComponent<RectTransform>();
-                    component.localPosition = Vector3.zero;
-                    component.sizeDelta = new Vector2(0.2f, 0.03f);
-                    component.localPosition = new Vector3(0.064f, -0.195f, -0.15f);
-                    component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+            }.AddComponent<Text>();
+            text.font = currentFont;
+            text.text = ">";
+            text.fontSize = 1;
+            text.color = textColors[0];
+            text.alignment = TextAnchor.MiddleCenter;
+            text.resizeTextForBestFit = true;
+            text.resizeTextMinSize = 0;
+            component = text.GetComponent<RectTransform>();
+            component.localPosition = Vector3.zero;
+            component.sizeDelta = new Vector2(0.2f, 0.03f);
+            component.localPosition = new Vector3(0.064f, -0.195f, -0.15f);
+            component.rotation = Quaternion.Euler(new Vector3(180f, 90f, 90f));
+;
 
-                // Mod Buttons
-                    ButtonInfo[] activeButtons = buttons[buttonsType].Skip(pageNumber * buttonsPerPage).Take(buttonsPerPage).ToArray();
+            // Mod Buttons
+            ButtonInfo[] activeButtons = buttons[buttonsType].Skip(pageNumber * buttonsPerPage).Take(buttonsPerPage).ToArray();
                     for (int i = 0; i < activeButtons.Length; i++)
                     {
                         CreateButton(i * 0.1f, activeButtons[i]);

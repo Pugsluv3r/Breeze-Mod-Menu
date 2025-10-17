@@ -31,7 +31,7 @@ namespace Breeze.Mods
 
         public static void JoinRoomLucio()
         {
-            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom("Lucio", JoinType.Solo);
+            PhotonNetworkController.Instance.AttemptToJoinSpecificRoom("LUCIO", JoinType.Solo);
         }
     }
 }
