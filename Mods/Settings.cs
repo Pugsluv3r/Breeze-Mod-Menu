@@ -49,7 +49,7 @@ namespace BreezeCheatClient.Mods
 
         public static void EnableDisconnectButton()
         {
-            disconnectButton = true;
+            disconnectButton = false;
         }
 
         public static void DisableDisconnectButton()

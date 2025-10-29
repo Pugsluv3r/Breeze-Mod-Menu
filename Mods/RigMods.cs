@@ -18,12 +18,12 @@ namespace Breeze.Mods
         {
             if (RightTrigger)
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = false;  // im stupid and this took me 3 hours to figure out
+                GorillaTagger.Instance.offlineVRRig.enabled = false;  
 
             }
             else
             {
-                GorillaTagger.Instance.offlineVRRig.enabled = true; // i hate myself
+                GorillaTagger.Instance.offlineVRRig.enabled = true; 
             }
         }
         public static void Grabrig()

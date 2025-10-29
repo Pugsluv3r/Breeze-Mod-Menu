@@ -45,19 +45,19 @@ namespace Breeze.Mods
                 GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0f, 255f, 0f);
                 GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0f, 255f, 0f);
 
-                await System.Threading.Tasks.Task.Delay(100);
+                await System.Threading.Tasks.Task.Delay(1);
 
                 GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0f, -255f, 0f);
                 GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0f, -255f, 0f);
 
                 
-                await System.Threading.Tasks.Task.Delay(100);
+                await System.Threading.Tasks.Task.Delay(1);
 
                 GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0f, 255f, 0f);
                 GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0f, 255f, 0f);
 
 
-                await System.Threading.Tasks.Task.Delay(100);
+                await System.Threading.Tasks.Task.Delay(1);
 
                 GTPlayer.Instance.rightControllerTransform.localPosition = new Vector3(0f, -255f, 0f);
                 GTPlayer.Instance.leftControllerTransform.localPosition = new Vector3(0f, -255f, 0f);

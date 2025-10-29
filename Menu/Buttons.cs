@@ -2,7 +2,7 @@
 using BreezeCheatClient.Classes;
 using BreezeCheatClient.Mods;
 using static BreezeCheatClient.Settings;
-using static Breeze.Menu.Disconnect;
+
 
 namespace BreezeCheatClient.Menu
 {
@@ -20,7 +20,7 @@ namespace BreezeCheatClient.Menu
                 new ButtonInfo { buttonText = "PC Utils", method =() => PcMods.EnterPcMods(), isTogglable = false, toolTip = "suckjdisfj"},
                 new ButtonInfo { buttonText = "Other", method =() => Othershit.EnterOther(), isTogglable = false, toolTip = "Uncatatagorized junk"},
                 new ButtonInfo { buttonText = "Credits", method =() => Global.Entercredits(), isTogglable = false, toolTip = "Congrats we made a mod"},
-                 new ButtonInfo { buttonText = "Click for version info", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "Version: INDEV preview 2"},
+                 new ButtonInfo { buttonText = "Click for version info", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "Version: INDEV 3"},
             },
 
             new ButtonInfo[] { // Settings
@@ -75,6 +75,7 @@ namespace BreezeCheatClient.Menu
                  new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                  new ButtonInfo { buttonText = "Devs:", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
                  new ButtonInfo { buttonText = "PUGSLUV3R", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
+                 new ButtonInfo { buttonText = "Acutebunny", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
                  new ButtonInfo { buttonText = "Testers:", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
                  new ButtonInfo { buttonText = "Duhui", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
                  new ButtonInfo { buttonText = "A msg from me:", method =() => Global.Nothingsandwitch(), isTogglable = false, toolTip = "This is just text dummy KekW"},
@@ -94,6 +95,7 @@ namespace BreezeCheatClient.Menu
                  new ButtonInfo[] { // Other shit [10]
                  new ButtonInfo { buttonText = "Return to Main", method =() => Global.ReturnHome(), isTogglable = false, toolTip = "Returns to the main page of the menu."},
                  new ButtonInfo { buttonText = "Clear Notifs", method =() => Othershit.Clearnotifs(), isTogglable = false, toolTip = "Clears all notifications"},
+                 new ButtonInfo { buttonText = "Quit Game", method =() => Othershit.Quitgame(), isTogglable = false, toolTip = "uhh bye bye"},
          },
        };
     }

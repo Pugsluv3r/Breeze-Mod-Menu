@@ -84,17 +84,13 @@ namespace Breeze.Mods
             {
                 GTPlayer.Instance.transform.position += GorillaTagger.Instance.headCollider.transform.forward * Time.deltaTime * flyspeed;
                 GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
-                if (RightA)
-                {
-                    flyspeed = 20f;
-                }
             }
         }
         public static void HandFly(float flyspeed)
         {
             if (RightTrigger)
             {
-                GTPlayer.Instance.transform.position += GorillaTagger.Instance.rightHandTransform.forward * Time.deltaTime * flyspeed;
+                GTPlayer.Instance.transform.position += GorillaTagger.Instance.rightHandTransform.transform.forward * Time.deltaTime * flyspeed;
                 GorillaTagger.Instance.rigidbody.linearVelocity = Vector3.zero;
             }
 

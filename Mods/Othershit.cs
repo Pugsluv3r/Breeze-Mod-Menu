@@ -18,6 +18,9 @@ namespace Breeze.Mods
         {
             NotifiLib.ClearAllNotifications();
         }
-        
+        public static void Quitgame()
+        {
+            Application.Quit();
+        }
     }
 }
